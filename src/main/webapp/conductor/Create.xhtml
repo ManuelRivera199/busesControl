@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConductorCreateDlg" widgetVar="ConductorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateConductorTitle}">
+            <h:form id="ConductorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{conductorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_dui}" for="dui" />
+                        <p:inputText id="dui" value="#{conductorController.selected.dui}" title="#{bundle.CreateConductorTitle_dui}" required="true" requiredMessage="#{bundle.CreateConductorRequiredMessage_dui}"/>
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{conductorController.selected.nombre}" title="#{bundle.CreateConductorTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{conductorController.selected.apellido}" title="#{bundle.CreateConductorTitle_apellido}" />
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_numerolicencia}" for="numerolicencia" />
+                        <p:inputText id="numerolicencia" value="#{conductorController.selected.numerolicencia}" title="#{bundle.CreateConductorTitle_numerolicencia}" />
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{conductorController.selected.direccion}" title="#{bundle.CreateConductorTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateConductorLabel_idBus}" for="idBus" />
+                        <p:selectOneMenu id="idBus" value="#{conductorController.selected.idBus}" >
+                            <f:selectItems value="#{busController.itemsAvailableSelectOne}"
+                                           var="idBusItem"
+                                           itemValue="#{idBusItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{conductorController.create}" value="#{bundle.Save}" update="display,:ConductorListForm:datalist,:growl" oncomplete="handleSubmit(args,'ConductorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConductorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

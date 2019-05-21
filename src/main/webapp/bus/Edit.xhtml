@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BusEditDlg" widgetVar="BusEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBusTitle}">
+            <h:form id="BusEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{busController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBusLabel_idBus}" for="idBus" />
+                        <p:inputText id="idBus" value="#{busController.selected.idBus}" title="#{bundle.EditBusTitle_idBus}" required="true" requiredMessage="#{bundle.EditBusRequiredMessage_idBus}"/>
+                        <p:outputLabel value="#{bundle.EditBusLabel_numerochasis}" for="numerochasis" />
+                        <p:inputText id="numerochasis" value="#{busController.selected.numerochasis}" title="#{bundle.EditBusTitle_numerochasis}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_placa}" for="placa" />
+                        <p:inputText id="placa" value="#{busController.selected.placa}" title="#{bundle.EditBusTitle_placa}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_modelo}" for="modelo" />
+                        <p:inputText id="modelo" value="#{busController.selected.modelo}" title="#{bundle.EditBusTitle_modelo}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_color}" for="color" />
+                        <p:inputText id="color" value="#{busController.selected.color}" title="#{bundle.EditBusTitle_color}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_anio}" for="anio" />
+                        <p:inputText id="anio" value="#{busController.selected.anio}" title="#{bundle.EditBusTitle_anio}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_kilometraje}" for="kilometraje" />
+                        <p:inputText id="kilometraje" value="#{busController.selected.kilometraje}" title="#{bundle.EditBusTitle_kilometraje}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_numeroAsiento}" for="numeroAsiento" />
+                        <p:inputText id="numeroAsiento" value="#{busController.selected.numeroAsiento}" title="#{bundle.EditBusTitle_numeroAsiento}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_marca}" for="marca" />
+                        <p:inputText id="marca" value="#{busController.selected.marca}" title="#{bundle.EditBusTitle_marca}" />
+                        <p:outputLabel value="#{bundle.EditBusLabel_motor}" for="motor" />
+                        <p:inputText id="motor" value="#{busController.selected.motor}" title="#{bundle.EditBusTitle_motor}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{busController.update}" value="#{bundle.Save}" update="display,:BusListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BusEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BusEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

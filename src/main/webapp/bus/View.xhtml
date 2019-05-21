@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BusViewDlg" widgetVar="BusViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBusTitle}">
+            <h:form id="BusViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{busController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBusLabel_idBus}"/>
+                        <h:outputText value="#{busController.selected.idBus}" title="#{bundle.ViewBusTitle_idBus}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_numerochasis}"/>
+                        <h:outputText value="#{busController.selected.numerochasis}" title="#{bundle.ViewBusTitle_numerochasis}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_placa}"/>
+                        <h:outputText value="#{busController.selected.placa}" title="#{bundle.ViewBusTitle_placa}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_modelo}"/>
+                        <h:outputText value="#{busController.selected.modelo}" title="#{bundle.ViewBusTitle_modelo}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_color}"/>
+                        <h:outputText value="#{busController.selected.color}" title="#{bundle.ViewBusTitle_color}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_anio}"/>
+                        <h:outputText value="#{busController.selected.anio}" title="#{bundle.ViewBusTitle_anio}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_kilometraje}"/>
+                        <h:outputText value="#{busController.selected.kilometraje}" title="#{bundle.ViewBusTitle_kilometraje}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_numeroAsiento}"/>
+                        <h:outputText value="#{busController.selected.numeroAsiento}" title="#{bundle.ViewBusTitle_numeroAsiento}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_marca}"/>
+                        <h:outputText value="#{busController.selected.marca}" title="#{bundle.ViewBusTitle_marca}"/>
+                        <h:outputText value="#{bundle.ViewBusLabel_motor}"/>
+                        <h:outputText value="#{busController.selected.motor}" title="#{bundle.ViewBusTitle_motor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BusViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
